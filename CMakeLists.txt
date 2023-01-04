@@ -43,6 +43,7 @@ FetchContent_MakeAvailable(mnist_loader)
 
 FetchContent_Declare(
         monogon
+#        GIT_REPOSITORY file:///home/noname/Workspace/monogon
         GIT_REPOSITORY https://github.com/mmpaszkowski/monogon.git
         GIT_SHALLOW TRUE)
 FetchContent_MakeAvailable(monogon)

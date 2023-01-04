@@ -2,7 +2,6 @@
 #include <monogon/loss/MSE.h>
 #include <monogon/optimizer/SGD.h>
 #include <mnist_loader/mnist_reader.hpp>
-#include <monogon/Vector.h>
 #include <monogon/layer/Activation.h>
 #include <monogon/layer/Dense.h>
 #include <monogon/layer/Input.h>
@@ -20,13 +19,13 @@ int main()
     std::cout << "Number of test images = " << dataset.test_images.size() << std::endl;
     std::cout << "Number of test labels = " << dataset.test_labels.size() << std::endl;
 
-    Matrix x(dataset.training_images);
-    Vector y(dataset.training_labels);
+    Array x(dataset.training_images);
+    Array y(dataset.training_labels);
 
     OneHot oneHot;
 
-    Matrix X = (x / 255.0);
-    Matrix Y = oneHot(y, 10, 1.0, 0.0);
+    Array X = (x / 255.0);
+    Array Y = oneHot(y, 10, 1.0, 0.0);
 
     ReLu relu;
     Sigmoid sigmoid;
@@ -39,7 +38,7 @@ int main()
 
     Model model(dense1, activation2);
     model.compile(SGD(1.0), MSE());
-    model.fit(X, Y, 100, 32);
+    model.fit(X, Y, 5, 32);
     std::cout << model.predict(X);
 
     return 0;

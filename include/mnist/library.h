@@ -7,4 +7,5 @@ namespace app
     double multiply(double a, double b);
 }
 
+
 #endif //CPP_APP_TEMPLATE_LIBRARY_H
